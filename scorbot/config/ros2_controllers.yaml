@@ -1,0 +1,70 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000 #Hz
+
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+      
+    scorbot_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    hand_controller:
+      type: position_controllers/GripperActionController
+
+scorbot_arm_controller:
+  ros__parameters:
+    joints:
+      - slide_base_joint
+      - body_joint
+      - shoulder_joint
+      - elbow_joint
+      - wrist_joint
+      - roll_wrist_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+hand_controller:
+  ros__parameters:
+    joint: extruder_screw_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - slide_base_joint
+      - body_joint
+      - shoulder_joint
+      - elbow_joint
+      - wrist_joint
+      - roll_wrist_joint
+      - extruder_screw_joint
+    interface_name: position
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - slide_base_joint
+      - body_joint
+      - shoulder_joint
+      - elbow_joint
+      - wrist_joint
+      - roll_wrist_joint
+      - extruder_screw_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
